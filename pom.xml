@@ -20,11 +20,11 @@
   <parent>
     <groupId>org.sonatype.nexus.plugins</groupId>
     <artifactId>nexus-plugins</artifactId>
-    <version>3.41.1-01</version>
+    <version>3.68.1-02</version>
   </parent>
 
   <artifactId>nexus-repository-ansiblegalaxy-parent</artifactId>
-  <version>0.3.2</version>
+  <version>0.3.3</version>
   <packaging>pom</packaging>
 
   <inceptionYear>2020</inceptionYear>
@@ -48,24 +48,16 @@
   <properties>
     <nxrm-version>3.41.1-01</nxrm-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
-
-  <repositories>
-    <!-- ensure we can find the parent pom when starting from an empty local .m2 repository -->
-    <repository>
-      <id>rso-snapshots</id>
-      <url>https://repository.sonatype.org/content/repositories/snapshots</url>
-    </repository>
-  </repositories>
 
   <build>
     <pluginManagement>
       <plugins>
         <plugin>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>1.4.1</version>
+          <version>3.5.0</version>
         </plugin>
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
@@ -86,10 +78,11 @@
             <configuration>
               <rules>
                 <!--
-                Ensure use of Java 8, as required by NXRM
+                Ensure use of Java 11 or 17 starting from 3.67, as required by NXRM
+                https://help.sonatype.com/en/sonatype-nexus-repository-system-requirements.html
                 -->
                 <requireJavaVersion>
-                  <version>[1.8,1.9)</version>
+                  <version>[11.0,17.0)</version>
                 </requireJavaVersion>
                 <!--
                 Require Maven 3.3.3+
@@ -97,6 +90,7 @@
                 <requireMavenVersion>
                   <version>[3.3.3,)</version>
                 </requireMavenVersion>
+
               </rules>
             </configuration>
           </execution>
