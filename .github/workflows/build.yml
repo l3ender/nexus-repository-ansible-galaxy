@@ -14,6 +14,5 @@ jobs:
       - name: Build with Maven
         run: |
           mvn --batch-mode clean package -PbuildKar
-          find . -name "*.kar"
-          find . -name "*.jar"
+
 
