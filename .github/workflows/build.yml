@@ -13,5 +13,7 @@ jobs:
           architecture: x64
       - name: Build with Maven
         run: |
-          mvn clean package -PbuildKar
-          ls -la target
+          mvn --batch-mode clean package -PbuildKar
+          find . -name "*.kar"
+          find . -name "*.jar"
+
